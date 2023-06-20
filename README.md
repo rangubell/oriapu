@@ -18,7 +18,6 @@
 ##### usersテーブル
 | カラム名            | データ型     | オプション                         | 説明                     |
 | ------------------ | -----------  | --------------------------------- | ------------------------|
-| id                 | integer      | null: false                       | ユーザーID（主キー）     |
 | email              | string       | null: false, unique: true         | メールアドレス           |
 | encrypted_password | string       | null: false                       | パスワード（暗号化）     |
 | name               | string       | null: false                       | ユーザー名               |
@@ -32,7 +31,6 @@
 ##### departmentsテーブル
 | カラム名       | データ型    | オプション                   | 説明                     |
 | ------------- | ----------- | --------------------------- | ------------------------ |
-| id            | integer     | null: false                 | 部署ID（主キー）          |
 | name          | string      | null: false                 | 部署名                   |
 
 ### Association
@@ -43,7 +41,6 @@
 ##### schedulesテーブル
 | カラム名       | データ型    | オプション                       | 説明                     |
 | ------------- | ----------- | ------------------------------- | ------------------------ |
-| id            | integer     | null: false                     | スケジュールID（主キー）  |
 | user_id       | integer     | null: false, foreign_key: true  | ユーザーID（外部キー）    |
 | title         | string      | null: false                     | タイトル                 |
 | description   | text        | null: false                     | 詳細                     |
@@ -58,7 +55,6 @@
 ##### shared_schedulesテーブル
 | カラム名       | データ型    | オプション                       | 説明                     |
 | ------------- | ----------- | ------------------------------- | ------------------------ |
-| id            | integer     | null: false                     | 共有スケジュールID（主キー）  |
 | user_id       | integer     | null: false, foreign_key: true  | ユーザーID（外部キー）    |
 | schedule_id   | integer     | null: false, foreign_key: true  | スケジュールID（外部キー）    |
 
@@ -69,7 +65,6 @@
 ##### paid_leavesテーブル
 | カラム名       | データ型    | オプション                       | 説明                     |
 | ------------- | ----------- | ------------------------------- | ------------------------ |
-| id            | integer     | null: false                     | 有給休暇ID（主キー）      |
 | user_id       | integer     | null: false, foreign_key: true  | ユーザーID（外部キー）    |
 | start_date    | date        | null: false                     | 休暇開始日               |
 | end_date      | date        | null: false                     | 休暇終了日               |
