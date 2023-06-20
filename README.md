@@ -12,10 +12,11 @@
 - グループ/部署間の共有: スケジュールの共有を部署やグループ内で行います。
 - フィルタリング機能: 日付や部署、担当者ごとのフィルタリングをサポートします。
 - 検索機能: 部署ごとの検索、日付範囲検索、キーワード検索が可能です。
+- 有給休暇管理: 有給休暇の申請・承認・管理を行います。
 
-#### テーブル設計
+# テーブル設計
 
-##### usersテーブル
+## usersテーブル
 | カラム名            | データ型     | オプション                         | 説明                     |
 | ------------------ | -----------  | --------------------------------- | ------------------------|
 | email              | string       | null: false, unique: true         | メールアドレス           |
@@ -28,47 +29,49 @@
 - has_many :paid_leaves
 - belongs_to :department
 
-##### departmentsテーブル
+## departmentsテーブル
 | カラム名       | データ型    | オプション                   | 説明                     |
 | ------------- | ----------- | --------------------------- | ------------------------ |
 | name          | string      | null: false                 | 部署名                   |
 
 ### Association
-- has_many :users
 - has_many :schedules
-- has_many :shared_schedules
+- has_many :paid_leaves
+- belongs_to :department
 
-##### schedulesテーブル
+## schedulesテーブル
 | カラム名       | データ型    | オプション                       | 説明                     |
 | ------------- | ----------- | ------------------------------- | ------------------------ |
-| user_id       | integer     | null: false, foreign_key: true  | ユーザーID（外部キー）    |
 | title         | string      | null: false                     | タイトル                 |
 | description   | text        | null: false                     | 詳細                     |
-| date          | date        | null: false                     | 日付                     |
+| start_date    | date        | null: false                     | 開始日時                 |
+| end_date      | date        | null: false                     | 終了日時                 |
+| user_id       | integer     | null: false, foreign_key: true  | ユーザーID（外部キー）    |
 | department_id | integer     | null: false, foreign_key: true  | 部署ID（外部キー）        |
 
 ### Association
 - belongs_to :user
 - belongs_to :department
 - has_many :shared_schedules
+- has_many :shared_users, through: :shared_schedules, source: :user
 
-##### shared_schedulesテーブル
+## shared_schedulesテーブル(中間テーブル)
 | カラム名       | データ型    | オプション                       | 説明                     |
 | ------------- | ----------- | ------------------------------- | ------------------------ |
 | user_id       | integer     | null: false, foreign_key: true  | ユーザーID（外部キー）    |
 | schedule_id   | integer     | null: false, foreign_key: true  | スケジュールID（外部キー）    |
 
 ### Association
+- belongs_to :user
 - belongs_to :schedule
-- belongs_to :department
 
-##### paid_leavesテーブル
-| カラム名       | データ型    | オプション                       | 説明                     |
-| ------------- | ----------- | ------------------------------- | ------------------------ |
-| user_id       | integer     | null: false, foreign_key: true  | ユーザーID（外部キー）    |
-| start_date    | date        | null: false                     | 休暇開始日               |
-| end_date      | date        | null: false                     | 休暇終了日               |
-| reason        | string      | null: false                     | 休暇理由                 |
+## paid_leavesテーブル
+| カラム名         | データ型    | オプション                       | 説明                     |
+| -------------   | ----------- | ------------------------------- | ------------------------ |
+| leave_start_date| date        | null: false                     | 休暇開始日               |
+| leave_end_date  | date        | null: false                     | 休暇終了日               |
+| reason          | string      | null: false                     | 休暇理由                 |
+| user_id         | integer     | null: false, foreign_key: true  | ユーザーID（外部キー）    |
 
 ### Association
 - belongs_to :user
