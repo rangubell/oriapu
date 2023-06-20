@@ -29,7 +29,7 @@
 | email              | string       | null: false, unique: true         | メールアドレス           |
 | encrypted_password | string       | null: false                       | パスワード（暗号化）     |
 | name               | string       | null: false                       | ユーザー名               |
-| department_id      | integer      | null: false, foreign_key: true    | 部署ID（外部キー）       |
+| department_id      | references   | null: false, foreign_key: true    | 部署ID（外部キー）       |
 
 ### Association
 - has_many :schedules
@@ -53,8 +53,8 @@
 | description   | text        | null: false                     | 詳細                     |
 | start_date    | date        | null: false                     | 開始日時                 |
 | end_date      | date        | null: false                     | 終了日時                 |
-| user_id       | integer     | null: false, foreign_key: true  | ユーザーID（外部キー）    |
-| department_id | integer     | null: false, foreign_key: true  | 部署ID（外部キー）        |
+| user_id       | references  | null: false, foreign_key: true  | ユーザーID（外部キー）    |
+| department_id | references  | null: false, foreign_key: true  | 部署ID（外部キー）        |
 
 ### Association
 - belongs_to :user
@@ -65,8 +65,8 @@
 ## shared_schedulesテーブル(中間テーブル)
 | カラム名       | データ型    | オプション                       | 説明                     |
 | ------------- | ----------- | ------------------------------- | ------------------------ |
-| user_id       | integer     | null: false, foreign_key: true  | ユーザーID（外部キー）    |
-| schedule_id   | integer     | null: false, foreign_key: true  | スケジュールID（外部キー）    |
+| user_id       | references  | null: false, foreign_key: true  | ユーザーID（外部キー）    |
+| schedule_id   | references  | null: false, foreign_key: true  | スケジュールID（外部キー）    |
 
 ### Association
 - belongs_to :user
@@ -78,7 +78,7 @@
 | leave_start_date| date        | null: false                     | 休暇開始日               |
 | leave_end_date  | date        | null: false                     | 休暇終了日               |
 | reason          | string      | null: false                     | 休暇理由                 |
-| user_id         | integer     | null: false, foreign_key: true  | ユーザーID（外部キー）    |
+| user_id         | references  | null: false, foreign_key: true  | ユーザーID（外部キー）    |
 
 ### Association
 - belongs_to :user
