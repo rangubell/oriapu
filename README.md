@@ -82,3 +82,5 @@
 
 ### Association
 - belongs_to :user
+
+## データベース設計
