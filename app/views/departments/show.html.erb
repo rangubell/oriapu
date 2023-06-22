@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>自分のスケジュール</h1>
+<h1><%= @department.name %>のスケジュール</h1>
 
 <table>
   <thead>
@@ -18,7 +18,7 @@
         <td><%= schedule.start_time.strftime("%Y-%m-%d %H:%M") %></td>
         <td><%= link_to '詳細', schedule %></td>
         <td><%= link_to '編集', edit_schedule_path(schedule.id) %></td>
-        <td><%= link_to '削除',schedule_path(schedule.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '削除', schedule_path(schedule.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,7 +28,7 @@
 
 <%= link_to '予定を入れる', new_schedule_path %>
 <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-<%= link_to '部署スケジュール', department_path(current_user.department_id) %>
+<%= link_to '自分のスケジュールに戻る', schedules_path %>
 
 <%= month_calendar events: @schedules do |date, schedules| %>
   <%= date.day %>
