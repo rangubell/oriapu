@@ -15,5 +15,6 @@
   <%= @schedule.description %>
 </p>
 
-<%= link_to 'Edit', edit_schedule_path(@schedule) %> |
-<%= link_to 'Back', schedules_path %>
+<%= link_to '編集', edit_schedule_path(@schedule) %> |
+<%= link_to '戻る', schedules_path %>
+<td><%= link_to '削除',schedule_path(@schedule.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -3,7 +3,7 @@ class SchedulesController < ApplicationController
   before_action :set_schedule, only: [:edit, :show, :destroy, :update]
 
   def index
-    @schedules = Schedule.all
+    @schedules = current_user.schedules
   end
 
   def new
@@ -11,7 +11,11 @@ class SchedulesController < ApplicationController
   end
 
   def show
+    unless current_user == @schedule.user
+      redirect_to schedules_path
+    end
   end
+  
 
   def create
     Schedule.create(schedule_parameter)
@@ -25,7 +29,11 @@ class SchedulesController < ApplicationController
   end
 
   def edit
+    unless current_user == @schedule.user
+      redirect_to schedules_path
+    end
   end
+  
 
   def update
     if @schedule.update(schedule_parameter)
