@@ -40,8 +40,7 @@
 | ------------- | ----------- | ------------------------------- | ------------------------ |
 | title         | string      | null: false                     | タイトル                 |
 | description   | text        | null: false                     | 詳細                     |
-| start_date    | datetime    | null: false                     | 開始日時                 |
-| end_date      | datetime    | null: false                     | 終了日時                 |
+| start_time    | datetime    | null: false                     | 開始日時                 |
 | user_id       | references  | null: false, foreign_key: true  | ユーザーID（外部キー）    |
 
 ### Association
