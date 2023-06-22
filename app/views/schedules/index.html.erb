@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<h1>自分のスケジュール</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>タイトル</th>
+      <th>時間</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @schedules.each do |schedule| %>
+      <tr>
+        <td><%= schedule.title %></td>
+        <td><%= schedule.start_time.strftime("%Y-%m-%d %H:%M") %></td>
+        <td><%= schedule.end_time.strftime("%Y-%m-%d %H:%M") %></td>
+        <td><%= link_to 'Show', schedule %></td>
+        <td><%= link_to 'Edit', edit_schedule_path(schedule.id) %></td>
+        <td><%= link_to 'Destroy',schedule_path(schedule.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '日記をかく', new_schedule_path %>
+
+<%= month_calendar events: @schedules do |date, schedules| %>
+  <%= date.day %>
+
+  <% schedules.each do |schedule| %>
+    <div>
+      <%= link_to schedule.title, schedule %>
+    </div>
+  <% end %>
+<% end %>

@@ -7,4 +7,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up,
                                       keys: [:name,:department_id])
   end
+
+  def after_sign_in_path_for(resource)
+    schedules_path
+  end
 end
