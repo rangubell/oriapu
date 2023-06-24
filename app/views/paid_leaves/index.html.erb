@@ -1,0 +1,16 @@
+<!-- 承認ページの例 -->
+<h1>有給申請の承認</h1>
+
+<% @paid_leaves.each do |paid_leave| %>
+  <div>
+    <h3>有給申請ID: <%= paid_leave.id %></h3>
+    <p>申請者: <%= paid_leave.user.name %></p>
+    <p>申請日時: <%= paid_leave.requested_date %></p>
+    <p>申請内容: <%= paid_leave.vacation_days %>日間の有給申請</p>
+    
+    <%= form_with model: paid_leave, url: approve_paid_leave_path(paid_leave) do |form| %>
+      <%= form.select :approval_status, options_for_select(['保留', '承認', '却下']), prompt: '選択してください' %>
+      <%= form.submit "更新" %>
+    <% end %>
+  </div>
+<% end %>

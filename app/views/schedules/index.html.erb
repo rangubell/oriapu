@@ -30,6 +30,7 @@
 <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
 <%= link_to '部署スケジュール', department_path(current_user.department_id) %>
 
+
 <%= month_calendar events: @schedules do |date, schedules| %>
   <%= date.day %>
 

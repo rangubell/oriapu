@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :users, only: :show
   resources :schedules
   resources :departments, only: [:show]
+  resources :paid_leaves, only: [:new, :create, :index]
 end
