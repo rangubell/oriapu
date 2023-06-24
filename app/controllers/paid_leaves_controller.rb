@@ -1,0 +1,2 @@
+class PaidLeavesController < ApplicationController
+end

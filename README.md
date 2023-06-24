@@ -48,7 +48,7 @@
 - has_many :shared_schedules
 - has_many :shared_users, through: :shared_schedules, source: :user
 
-## shared_schedulesテーブル(中間テーブル)
+## shared_schedulesテーブル(中間テーブル) ※不要の可能性あり、用検討
 | カラム名       | データ型    | オプション                       | 説明                     |
 | ------------- | ----------- | ------------------------------- | ------------------------ |
 | user_id       | references  | null: false, foreign_key: true  | ユーザーID（外部キー）    |
