@@ -33,7 +33,8 @@
 
 ### Association
 - has_many :schedules
-- has_many :paid_leaves
+- has_many :leave_applications
+- has_one :paid_leave
 
 ## schedulesテーブル
 | カラム名       | データ型    | オプション                       | 説明                     |
@@ -45,28 +46,29 @@
 
 ### Association
 - belongs_to :user
-- has_many :shared_schedules
-- has_many :shared_users, through: :shared_schedules, source: :user
-
-## shared_schedulesテーブル(中間テーブル) ※不要の可能性あり、用検討
-| カラム名       | データ型    | オプション                       | 説明                     |
-| ------------- | ----------- | ------------------------------- | ------------------------ |
-| user_id       | references  | null: false, foreign_key: true  | ユーザーID（外部キー）    |
-| schedule_id   | references  | null: false, foreign_key: true  | スケジュールID（外部キー）    |
-
-### Association
-- belongs_to :user
-- belongs_to :schedule
 
 ## paid_leavesテーブル
 | カラム名         | データ型    | オプション                       | 説明                     |
 | -------------   | ----------- | ------------------------------- | ------------------------ |
-| leave_start_date| date        | null: false                     | 休暇開始日               |
-| leave_end_date  | date        | null: false                     | 休暇終了日               |
-| reason          | string      | null: false                     | 休暇理由                 |
+| use_date        | date        |                                 | 使用した有給              |
+| total_day       | integer     | default: 0                      | 累計付与有給              |
+| remaining_day   | integer     | default: 0                      | 残有給                   |
+| expiration_date | date        |                                 | 休暇開始日               |
 | user_id         | references  | null: false, foreign_key: true  | ユーザーID（外部キー）    |
 
 ### Association
 - belongs_to :user
+- has_many :leave_applications
 
-## データベース設計
+## leave_applicationsテーブル
+| カラム名         | データ型    | オプション                               | 説明                     |
+| start_date      | datetime    | null: false                             | 有給開始日              |
+| end_date        | datetime    | null: false                             | 有給終了日              |
+| reason          | string      | null: false, default: "有給消失日のため" | 申請理由              |
+| status          | string      |                                         | 有給申請状態              |
+| user_id         | references  | null: false, foreign_key: true          | ユーザーID（外部キー）    |
+| paid_leave      | references  | null: false, foreign_key: true          | 有給ID（外部キー）        |
+
+### Association
+- belongs_to :user
+- belongs_to :paid_leave

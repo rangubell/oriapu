@@ -2,15 +2,10 @@
 
 <h1>有給申請</h1>
 
-<p>残りの有給日数: <%= @vacation_days %>日</p>
+<p>残りの有給日数: <%= @remaining_day %>日</p>
 <p>有給消滅日: <%= @expiration_date %></p>
 
 <%= form_with model: @paid_leave, url: paid_leaves_path do |form| %>
-  <div>
-  <%= form.label :vacation_days, "有給休暇日数" %>
-  <%= form.number_field :vacation_days, min: 0 %>
-</div>
-
   <div>
     <%= form.label :start_date, "開始日" %>
     <%= form.date_field :start_date %>
