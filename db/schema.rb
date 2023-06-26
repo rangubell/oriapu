@@ -13,10 +13,14 @@
 ActiveRecord::Schema.define(version: 2023_06_23_123647) do
 
   create_table "paid_leaves", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.integer "add_day"
-    t.integer "delete_day"
+    t.date "use_date"
+    t.integer "vacation_days", default: 0
+    t.integer "remaining_days", default: 0
+    t.date "expiration_date"
+    t.datetime "start_date"
+    t.datetime "end_date"
     t.string "reason", default: "法定付与日のため"
-    t.string "approval_status", default: "保留"
+    t.string "status", default: "保留"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -48,4 +52,5 @@ ActiveRecord::Schema.define(version: 2023_06_23_123647) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "paid_leaves", "users"
 end
