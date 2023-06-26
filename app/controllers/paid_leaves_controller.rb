@@ -7,6 +7,8 @@ class PaidLeavesController < ApplicationController
 
   def new
     @paid_leave = PaidLeave.new
+    @vacation_days = current_user.paid_leave.vacation_days
+    @expiration_date = current_user.paid_leave.expiration_date
   end
 
   def create
