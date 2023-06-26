@@ -11,6 +11,14 @@ class User < ApplicationRecord
   validates :department_id, numericality: { other_than: 1 , message: "can't be blank"}
 
   has_many :schedules
-  has_many :paid_leaves
+  has_many :leave_applications
+  has_one :paid_leave
 
+  after_create :create_paid_leave
+
+  private
+
+  def create_paid_leave
+    build_paid_leave(vacation_days: 0, remaining_days: 0).save
+  end
 end

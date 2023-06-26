@@ -10,17 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_23_123647) do
+ActiveRecord::Schema.define(version: 2023_06_26_151311) do
+
+  create_table "leave_applications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.string "reason"
+    t.string "status"
+    t.bigint "user_id", null: false
+    t.bigint "paid_leave_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["paid_leave_id"], name: "index_leave_applications_on_paid_leave_id"
+    t.index ["user_id"], name: "index_leave_applications_on_user_id"
+  end
 
   create_table "paid_leaves", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.date "use_date"
     t.integer "vacation_days", default: 0
     t.integer "remaining_days", default: 0
     t.date "expiration_date"
-    t.datetime "start_date"
-    t.datetime "end_date"
-    t.string "reason", default: "法定付与日のため"
-    t.string "status", default: "保留"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -52,5 +61,7 @@ ActiveRecord::Schema.define(version: 2023_06_23_123647) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "leave_applications", "paid_leaves", column: "paid_leave_id"
+  add_foreign_key "leave_applications", "users"
   add_foreign_key "paid_leaves", "users"
 end
