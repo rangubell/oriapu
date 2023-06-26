@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_22_112813) do
+ActiveRecord::Schema.define(version: 2023_06_23_123647) do
+
+  create_table "paid_leaves", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.integer "add_day"
+    t.integer "delete_day"
+    t.string "reason", default: "法定付与日のため"
+    t.string "approval_status", default: "保留"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_paid_leaves_on_user_id"
+  end
 
   create_table "schedules", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "title", null: false
@@ -27,6 +38,7 @@ ActiveRecord::Schema.define(version: 2023_06_22_112813) do
     t.string "encrypted_password", default: "", null: false
     t.string "name", null: false
     t.integer "department_id", null: false
+    t.datetime "hired_date", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

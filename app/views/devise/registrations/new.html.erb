@@ -37,7 +37,8 @@
     </div>
     <%= f.password_field :password_confirmation, class:"input-default", id:"password-confirmation", placeholder:"同じパスワードを入力して下さい" %>
     <%= f.collection_select(:department_id, Department.all, :id, :name, {}, {class:"department-select"}) %>
-  </div>
+    <%= f.label :hired_date, '入社日' %>
+    <%= f.date_select :hired_date, { prompt: { year: '年', month: '月', day: '日' } } %>
   
   <div class='register-btn'>
     <%= f.submit "登録" ,class:"register-red-btn" %>

@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up,
-                                      keys: [:name,:department_id])
+                                      keys: [:name,:department_id, :hired_date])
   end
 
   def after_sign_in_path_for(resource)
