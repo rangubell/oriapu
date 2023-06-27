@@ -1,4 +1,3 @@
-# app/controllers/leave_applications_controller.rb
 class LeaveApplicationsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_leave_application, only: [:show, :edit, :update, :destroy]
@@ -29,21 +28,23 @@ class LeaveApplicationsController < ApplicationController
     @leave_application = LeaveApplication.find(params[:id])
     @leave_application.status = params[:leave_application][:status]
     @leave_application.updated_by_user = current_user
-    
+  
+    if @leave_application.status == '承認'
+      @leave_application.consume_leave_days
+    end
+  
     if @leave_application.save
       redirect_to leave_applications_path, notice: "申請のステータスを更新しました"
     else
       render :edit
     end
-  end  
+  end
+  
 
   def show
     @approved_leave_applications = LeaveApplication.where(status: ['承認', '却下'], user_id: current_user.id)
     @updated_by_user = @leave_application.updated_by_user
   end
-  
-  
-
 
   private
 
@@ -53,6 +54,9 @@ class LeaveApplicationsController < ApplicationController
   end  
 
   def set_leave_application
-    @leave_application = LeaveApplication.find(params[:id])
+    @leave_application = LeaveApplication.find_by(id: params[:id])
+    if @leave_application.nil?
+      redirect_to schedules_path
+    end
   end
 end
