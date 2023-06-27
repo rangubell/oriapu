@@ -1,0 +1,28 @@
+<h1>処理済みの有給申請一覧</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>申請者</th>
+      <th>開始日</th>
+      <th>終了日</th>
+      <th>理由</th>
+      <th>処理者</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @approved_leave_applications.each do |leave_application| %>
+      <tr>
+        <td><%= leave_application.user.name %></td>
+        <td><%= leave_application.start_date.strftime("%Y/%m/%d") %></td>
+        <td><%= leave_application.end_date.strftime("%Y/%m/%d") %></td>
+        <td><%= leave_application.reason %></td>
+        <td><%= leave_application.status %></td>
+        <td><%= @updated_by_user.name if @updated_by_user %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>
+
+<%= link_to 'マイページに戻る', schedules_path %>

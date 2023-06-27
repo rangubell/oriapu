@@ -16,9 +16,10 @@ ActiveRecord::Schema.define(version: 2023_06_26_151311) do
     t.datetime "start_date", null: false
     t.datetime "end_date", null: false
     t.string "reason", default: "有給消失日のため", null: false
-    t.string "status"
+    t.string "status", default: "保留"
     t.bigint "user_id", null: false
     t.bigint "paid_leave_id", null: false
+    t.integer "updated_by_user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["paid_leave_id"], name: "index_leave_applications_on_paid_leave_id"

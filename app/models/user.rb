@@ -19,6 +19,6 @@ class User < ApplicationRecord
   private
 
   def create_paid_leave
-    build_paid_leave(vacation_days: 0, remaining_days: 0).save
+    build_paid_leave(total_day: 0, remaining_day: 0).save
   end
 end
