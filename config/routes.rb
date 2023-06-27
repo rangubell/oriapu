@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :schedules
   resources :departments, only: [:show]
   resources :paid_leaves, only: [:new, :create, :index]
+  resources :leave_applications, only: [:new, :create, :index]
 end

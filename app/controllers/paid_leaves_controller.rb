@@ -7,12 +7,10 @@ class PaidLeavesController < ApplicationController
 
   def new
     @paid_leave = PaidLeave.new
-    @remaining_day = current_user.paid_leave.remaining_day
-    @expiration_date = current_user.paid_leave.expiration_date
   end
 
   def create
-    @paid_leave = PaidLeave.new(paid_leave_params)
+    @paid_leave = current_user.paid_leave.build(paid_leave_params)
 
     if @paid_leave.save
       redirect_to schedules_path
@@ -24,7 +22,6 @@ class PaidLeavesController < ApplicationController
   private
 
   def paid_leave_params
-    params.require(:paid_leave).permit(:add_day, :delete_day, :reason, :approval_status)
-          .merge(user_id: current_user.id)
+    params.require(:paid_leave).permit(:start_date, :end_date, :reason)
   end
 end

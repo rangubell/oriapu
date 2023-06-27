@@ -1,11 +1,9 @@
-<!-- app/views/paid_leaves/new.html.erb -->
-
 <h1>有給申請</h1>
 
 <p>残りの有給日数: <%= @remaining_day %>日</p>
 <p>有給消滅日: <%= @expiration_date %></p>
 
-<%= form_with model: @paid_leave, url: paid_leaves_path do |form| %>
+<%= form_with model: @leave_application, url: leave_applications_path do |form| %>
   <div>
     <%= form.label :start_date, "開始日" %>
     <%= form.date_field :start_date %>
@@ -23,6 +21,5 @@
 
   <%= form.submit "申請" %>
 <% end %>
-
 
 <%= link_to 'マイページに戻る', schedules_path %>
