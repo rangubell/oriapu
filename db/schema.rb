@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2023_06_26_151311) do
     t.integer "total_day", default: 0
     t.integer "remaining_day", default: 0
     t.date "expiration_date"
+    t.date "granted_date"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -52,7 +53,7 @@ ActiveRecord::Schema.define(version: 2023_06_26_151311) do
     t.string "encrypted_password", default: "", null: false
     t.string "name", null: false
     t.integer "department_id", null: false
-    t.datetime "hired_date", null: false
+    t.date "hired_date", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

@@ -29,6 +29,7 @@
 | email              | string       | null: false, unique: true         | メールアドレス           |
 | encrypted_password | string       | null: false                       | パスワード（暗号化）     |
 | name               | string       | null: false                       | ユーザー名               |
+| hired_date         | date         | null: false                       | 入社日                   |
 | department_id      | integer      | null: false                       | 部署名（アクティブハッシュ）|
 
 ### Association
@@ -48,13 +49,14 @@
 - belongs_to :user
 
 ## paid_leavesテーブル
-| カラム名         | データ型    | オプション                       | 説明                     |
-| -------------   | ----------- | ------------------------------- | ------------------------ |
-| use_date        | date        |                                 | 使用した有給              |
-| total_day       | integer     | default: 0                      | 累計付与有給              |
-| remaining_day   | integer     | default: 0                      | 残有給                   |
-| expiration_date | date        |                                 | 休暇開始日               |
-| user            | references  | null: false, foreign_key: true  | ユーザーID（外部キー）    |
+| カラム名               | データ型    | オプション                       | 説明                     |
+| --------------------- | ----------- | ------------------------------- | ------------------------ |
+| use_date              | date        |                                 | 使用した有給              |
+| total_day             | integer     | default: 0                      | 累計付与有給              |
+| remaining_day         | integer     | default: 0                      | 残有給                   |
+| expiration_date       | date        |                                 | 休暇開始日               |
+| granted_date          |	date		    |                                 | 初回の有給付与日          |
+| user                  | references  | null: false, foreign_key: true  | ユーザーID（外部キー）    |
 
 ### Association
 - belongs_to :user
