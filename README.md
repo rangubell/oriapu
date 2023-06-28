@@ -63,10 +63,11 @@
 - has_many :leave_applications
 
 ## leave_applicationsテーブル
-| カラム名         | データ型    | オプション                               | 説明                     |
+| カラム名            | データ型    | オプション                               | 説明                     |
+| ------------------ | ----------- | -------------------------------------- | ------------------------ |
 | start_date         | datetime    | null: false                             | 有給開始日              |
 | end_date           | datetime    | null: false                             | 有給終了日              |
-| reason             | string      | null: false, default: "有給消失日のため" | 申請理由              |
+| reason             | string      | null: false, default: "有給消失日のため" | 申請理由                 |
 | status             | string      |                                         | 有給申請状態              |
 | user               | references  | null: false, foreign_key: true          | ユーザーID（外部キー）    |
 | paid_leave         | references  | null: false, foreign_key: true          | 有給ID（外部キー）        |
