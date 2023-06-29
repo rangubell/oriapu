@@ -4,6 +4,9 @@ class PaidLeave < ApplicationRecord
 
   MAX_GRANT_DAYS = 20
 
+  validates :total_day, numericality: { greater_than_or_equal_to: 0 }
+  validates :remaining_day, numericality: { greater_than_or_equal_to: 0 }
+
   def self.grant_annual_leave_if_due
     paid_leaves = PaidLeave.includes(:user).where('granted_date < ?', Date.current)
   
