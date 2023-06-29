@@ -11,9 +11,6 @@ class SchedulesController < ApplicationController
   end
 
   def show
-    unless current_user == @schedule.user
-      redirect_to schedules_path
-    end
   end
   
 

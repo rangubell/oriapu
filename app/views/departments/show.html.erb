@@ -17,8 +17,12 @@
         <td><%= schedule.title %></td>
         <td><%= schedule.start_time.strftime("%Y-%m-%d %H:%M") %></td>
         <td><%= link_to '詳細', schedule %></td>
-        <td><%= link_to '編集', edit_schedule_path(schedule.id) %></td>
-        <td><%= link_to '削除', schedule_path(schedule.id), method: :delete, data: { confirm: "予定を削除しますか？" } %></td>
+        <% if schedule.user == current_user %>
+          <td><%= link_to '編集', edit_schedule_path(schedule.id) %></td>
+          <td><%= link_to '削除', schedule_path(schedule.id), method: :delete, data: { confirm: "予定を削除しますか？" } %></td>
+        <% else %>
+          <td colspan="2"></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
