@@ -27,10 +27,8 @@ ActiveRecord::Schema.define(version: 2023_06_26_151311) do
   end
 
   create_table "paid_leaves", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.date "use_date"
     t.integer "total_day", default: 0
     t.integer "remaining_day", default: 0
-    t.date "expiration_date"
     t.date "granted_date"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false

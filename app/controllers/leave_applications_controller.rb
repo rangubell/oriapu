@@ -10,7 +10,6 @@ class LeaveApplicationsController < ApplicationController
   def new
     @leave_application = LeaveApplication.new
     @remaining_day = current_user.paid_leave.remaining_day
-    @expiration_date = current_user.paid_leave.expiration_date
   end
 
   def create
