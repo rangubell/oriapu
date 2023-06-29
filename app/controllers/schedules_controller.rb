@@ -1,7 +1,9 @@
 class SchedulesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_schedule, only: [:edit, :show, :destroy, :update]
 
   def index
-    @schedules = Schedule.all
+    @schedules = current_user.schedules
   end
 
   def new
@@ -9,26 +11,28 @@ class SchedulesController < ApplicationController
   end
 
   def show
-    @schedule = Schedule.find(params[:id])
   end
+  
 
   def create
     Schedule.create(schedule_parameter)
     redirect_to schedules_path
   end
+  
 
   def destroy
-    @schedule = Schedule.find(params[:id])
     @schedule.destroy
     redirect_to schedules_path, notice:"削除しました"
   end
 
   def edit
-    @schedule = schedule.find(params[:id])
+    unless current_user == @schedule.user
+      redirect_to schedules_path
+    end
   end
+  
 
   def update
-    @schedule = Schedule.find(params[:id])
     if @schedule.update(schedule_parameter)
       redirect_to schedules_path, notice: "編集しました"
     else
@@ -38,8 +42,12 @@ class SchedulesController < ApplicationController
 
   private
 
+  def set_schedule
+    @schedule = Schedule.find(params[:id])
+  end
+
   def schedule_parameter
-    params.require(:schedule).permit(:title, :description, :start_time, :end_date).merge(user_id: current_user.id)
+    params.require(:schedule).permit(:title, :description, :start_time).merge(user_id: current_user.id)
   end
 
 end

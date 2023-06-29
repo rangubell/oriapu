@@ -10,5 +10,6 @@ class Department < ActiveHash::Base
 
   include ActiveHash::Associations
   has_many :users
+  has_many :schedules, through: :users
 
   end
