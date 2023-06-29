@@ -14,7 +14,7 @@
   </thead>
   <tbody>
     <% @leave_applications.each do |leave_application| %>
-      <% if leave_application.status == '保留' %>
+      <% if leave_application.status == '保留' && leave_application.user.department_id == current_user.department_id %>
         <tr>
           <td><%= leave_application.user.name %></td>
           <td><%= leave_application.start_date.strftime("%Y/%m/%d") %></td>
@@ -35,4 +35,3 @@
 </table>
 
 <%= link_to '戻る', department_path(@department_id) %>
-
