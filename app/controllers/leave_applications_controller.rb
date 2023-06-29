@@ -1,6 +1,6 @@
 class LeaveApplicationsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_leave_application, only: [:show, :edit, :update, :destroy]
+  before_action :set_leave_application, only: [:show]
 
   def index
     @leave_applications = LeaveApplication.where(status: '保留')
@@ -35,7 +35,7 @@ class LeaveApplicationsController < ApplicationController
     if @leave_application.save
       redirect_to leave_applications_path, notice: "申請のステータスを更新しました"
     else
-      render :edit
+      redirect_to schedules_path
     end
   end
   
@@ -54,8 +54,5 @@ class LeaveApplicationsController < ApplicationController
 
   def set_leave_application
     @leave_application = LeaveApplication.find_by(id: params[:id])
-    if @leave_application.nil?
-      redirect_to schedules_path
-    end
-  end
+  end  
 end
