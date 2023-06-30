@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2023_06_26_151311) do
 
   create_table "schedules", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "title", null: false
-    t.text "description", null: false
+    t.text "description"
     t.datetime "start_time", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false

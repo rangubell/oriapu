@@ -41,7 +41,7 @@
 | カラム名       | データ型    | オプション                       | 説明                     |
 | ------------- | ----------- | ------------------------------- | ------------------------ |
 | title         | string      | null: false                     | タイトル                 |
-| description   | text        | null: false                     | 詳細                     |
+| description   | text        |                                 | 詳細                     |
 | start_time    | datetime    | null: false                     | 開始日時                 |
 | user          | references  | null: false, foreign_key: true  | ユーザーID（外部キー）    |
 
