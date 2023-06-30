@@ -65,3 +65,7 @@ gem 'simple_calendar', '~> 2.0'
 gem 'whenever', require: false
 
 gem 'pry-rails'
+
+group :production do
+  gem 'pg'
+end
