@@ -32,15 +32,15 @@ RSpec.describe PaidLeave, type: :model do
   describe 'メソッドの挙動' do
     it 'granted_dateが現在の日付よりも過去の場合、有給を追加すること' do
       paid_leave = FactoryBot.create(:paid_leave, granted_date: Date.yesterday, remaining_day: 0)
-      expect {
+      expect do
         PaidLeave.grant_annual_leave_if_due
-      }.to change { paid_leave.reload.remaining_day }
+      end.to change { paid_leave.reload.remaining_day }
     end
     it 'granted_dateが現在の日付よりも未来の場合、有給を追加しないこと' do
       paid_leave = FactoryBot.create(:paid_leave, granted_date: Date.tomorrow, remaining_day: 0)
-      expect {
+      expect do
         PaidLeave.grant_annual_leave_if_due
-      }.not_to change { paid_leave.reload.remaining_day }
+      end.not_to change { paid_leave.reload.remaining_day }
     end
   end
-end 
+end

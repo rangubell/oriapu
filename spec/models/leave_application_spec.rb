@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe LeaveApplication, type: :model do
   before do
     @leave_application = FactoryBot.build(:leave_application)
-    
   end
 
   describe 'バリデーション' do
@@ -41,7 +40,7 @@ RSpec.describe LeaveApplication, type: :model do
       @leave_application.start_date = Date.today
       @leave_application.end_date = Date.yesterday
       expect(@leave_application).to be_invalid
-      expect(@leave_application.errors[:end_date]).to include("must be after start date")
+      expect(@leave_application.errors[:end_date]).to include('must be after start date')
     end
     it '有給申請のステータスが「承認」の場合、trueを返すこと' do
       @leave_application.status = '承認'

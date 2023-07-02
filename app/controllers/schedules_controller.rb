@@ -12,29 +12,26 @@ class SchedulesController < ApplicationController
 
   def show
   end
-  
 
   def create
     Schedule.create(schedule_parameter)
     redirect_to schedules_path
   end
-  
 
   def destroy
     @schedule.destroy
-    redirect_to schedules_path, notice:"削除しました"
+    redirect_to schedules_path, notice: '削除しました'
   end
 
   def edit
-    unless current_user == @schedule.user
-      redirect_to schedules_path
-    end
+    return if current_user == @schedule.user
+
+    redirect_to schedules_path
   end
-  
 
   def update
     if @schedule.update(schedule_parameter)
-      redirect_to schedules_path, notice: "編集しました"
+      redirect_to schedules_path, notice: '編集しました'
     else
       render 'edit'
     end
@@ -49,5 +46,4 @@ class SchedulesController < ApplicationController
   def schedule_parameter
     params.require(:schedule).permit(:title, :description, :start_time).merge(user_id: current_user.id)
   end
-
 end

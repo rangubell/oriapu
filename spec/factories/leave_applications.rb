@@ -5,6 +5,6 @@ FactoryBot.define do
     start_date { Faker::Date.between(from: Date.today, to: Date.today + 1.month) }
     end_date { Faker::Date.between(from: start_date, to: start_date + 1.weeks) }
     reason { Faker::Lorem.sentence }
-    status { "承認" }
+    status { '承認' }
   end
 end
