@@ -1,0 +1,76 @@
+/* users.css */
+
+.top-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #eeceaa;
+  height: 200px;
+  width: 100%;
+}
+
+.logo-image {
+  width: 450px;
+  height: 300px;
+}
+
+.top-container {
+  height: 100vh;
+  width: 100vw;
+  background: #b5d1ee;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-title {
+  padding-top: 80px;
+  font-size: 24px;
+}
+
+.main-message {
+  padding-top: 20px;
+  font-size: 18px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 40px;
+  width: 300px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.login-button,
+.btn {
+  display: block;
+  margin-bottom: 20px;
+  padding: 15px 80px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  text-decoration: none;
+  font-size: 20px;
+  text-align: center;
+  line-height: 1;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.login-button:hover,
+.btn:hover {
+  transform: scale(0.95);
+}
+
+.login-button:active,
+.btn:active {
+  transform: scale(0.9);
+}
