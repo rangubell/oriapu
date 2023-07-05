@@ -67,6 +67,8 @@ gem 'whenever', require: false
 
 gem 'pry-rails'
 
+gem 'rails-i18n'
+
 group :production do
   gem 'pg'
 end
