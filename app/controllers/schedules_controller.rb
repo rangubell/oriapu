@@ -14,8 +14,20 @@ class SchedulesController < ApplicationController
   end
 
   def create
-    Schedule.create(schedule_parameter)
-    redirect_to schedules_path
+    start_time = DateTime.new(
+      params[:schedule][:"start_time_1i"].to_i,
+      params[:schedule][:"start_time_2i"].to_i,
+      params[:schedule][:"start_time_3i"].to_i,
+      params[:schedule][:"start_time_4i"].to_i,
+      params[:schedule][:"start_time_5i"].to_i
+    )
+    @schedule = Schedule.new(schedule_parameter.merge(start_time: start_time))
+
+    if @schedule.save
+      redirect_to schedules_path
+    else
+      render 'new'
+    end
   end
 
   def destroy
@@ -30,7 +42,15 @@ class SchedulesController < ApplicationController
   end
 
   def update
-    if @schedule.update(schedule_parameter)
+    start_time = DateTime.new(
+      params[:schedule][:"start_time_1i"].to_i,
+      params[:schedule][:"start_time_2i"].to_i,
+      params[:schedule][:"start_time_3i"].to_i,
+      params[:schedule][:"start_time_4i"].to_i,
+      params[:schedule][:"start_time_5i"].to_i
+    )
+
+    if @schedule.update(schedule_parameter.merge(start_time: start_time))
       redirect_to schedules_path, notice: '編集しました'
     else
       render 'edit'
