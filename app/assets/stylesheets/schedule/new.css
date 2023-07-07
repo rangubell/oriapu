@@ -69,3 +69,10 @@
 .back-link:hover {
   color: #b5d1ee;
 }
+
+.logo-link {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

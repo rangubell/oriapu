@@ -1,37 +1,43 @@
-<h1>保留中の有給申請一覧</h1>
+<%= render "shared/logos"%>
 
-<table>
-  <thead>
-    <tr>
-      <th>申請者</th>
-      <th>開始日</th>
-      <th>終了日</th>
-      <th>理由</th>
-      <th>ステータス</th>
-      <th>更新者</th>
-      <th>更新日時</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @leave_applications.each do |leave_application| %>
-      <% if leave_application.status == '保留' && leave_application.user.department_id == current_user.department_id %>
+<div class="wrapper">
+  <div class="pending-leaves-container">
+    <h1>保留中の有給申請一覧</h1>
+
+    <table>
+      <thead>
         <tr>
-          <td><%= leave_application.user.name %></td>
-          <td><%= leave_application.start_date.strftime("%Y/%m/%d") %></td>
-          <td><%= leave_application.end_date.strftime("%Y/%m/%d") %></td>
-          <td><%= leave_application.reason %></td>
-          <td>
-            <%= form_tag update_status_leave_application_path(leave_application), method: :patch do %>
-              <%= select_tag 'leave_application[status]', options_for_select(['保留', '承認', '却下'], leave_application.status) %>
-              <%= submit_tag '更新' %>
-            <% end %>
-          </td>
-          <td><%= leave_application.updated_by_user.name if leave_application.updated_by_user %></td>
-          <td><%= leave_application.updated_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
+          <th>申請者</th>
+          <th>開始日</th>
+          <th>終了日</th>
+          <th>理由</th>
+          <th>状態</th>
+          <th>更新者</th>
+          <th>更新日時</th>
         </tr>
-      <% end %>
-    <% end %>
-  </tbody>
-</table>
+      </thead>
+      <tbody>
+        <% @leave_applications.each do |leave_application| %>
+          <% if leave_application.status == '保留' && leave_application.user.department_id == current_user.department_id %>
+            <tr>
+              <td><%= leave_application.user.name %></td>
+              <td><%= leave_application.start_date.strftime("%Y/%m/%d") %></td>
+              <td><%= leave_application.end_date.strftime("%Y/%m/%d") %></td>
+              <td><%= leave_application.reason %></td>
+              <td>
+                <%= form_tag update_status_leave_application_path(leave_application), method: :patch do %>
+                  <%= select_tag "leave_application[status][#{leave_application.id}]", options_for_select(['保留', '承認', '却下'], leave_application.status) %>
+                  <%= submit_tag '更新' %>
+                <% end %>
+              </td>
+              <td><%= leave_application.updated_by_user.name if leave_application.updated_by_user %></td>
+              <td><%= leave_application.updated_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
 
-<%= link_to '戻る', department_path(@department_id) %>
+    <%= link_to '戻る', department_path(@department_id), class: "back-link-btn" %>
+  </div>
+</div>

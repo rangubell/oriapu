@@ -7,8 +7,8 @@
 <body>
   <header>
   <div class="schedule-header">
+  <%= image_tag("public/logo2.png", alt: "T.schedule Logo", class: "logo-header") %>
   <h1 class="header-title"><%= @department.name %>のスケジュール</h1>
-
   <%= link_to '予定を入れる', new_schedule_path, class: 'schedule-btn' %>
   <%= link_to '自分のスケジュールに戻る', schedules_path, class: 'schedule-btn' %>
   <%= link_to '有給申請一覧', leave_applications_path, class: 'schedule-btn' %>
