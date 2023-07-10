@@ -1,24 +1,35 @@
-<%= form_with(model: @schedule, local: true) do |form| %>
+<div class="schedule-new-main">
+   <%= render "shared/logos"%>
+  <%= form_with(model: @schedule, local: true, class: "schedule-form") do |form| %>
 
-  <div class="title">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
+    <div class="form-group">
+      <%= form.label :"予定", class: "label" %>
+      <%= form.text_field :title, class: "input" %>
+    </div>
 
-  <div class="date">
-    <%= form.label :start_time %>
-    <%= form.datetime_select :start_time %>
-  </div>
+    <div class="form-group">
+      <%= form.label :"開始時間", class: "label" %>
+     <div class="datetime-select-group">
+      <%= form.select :start_time_1i, (Time.now.year..Time.now.year + 5), selected: Time.now.year, prompt: "年" %><p>年</p>
+      <%= form.select :start_time_2i, (1..12), selected: Time.now.month, prompt: "月" %><p>月</p>
+      <%= form.select :start_time_3i, (1..31), selected: Time.now.day, prompt: "日" %><p>日</p>
+      <%= form.select :start_time_4i, (0..23), selected: Time.now.hour, prompt: "時" %><p>時</p>
+      <%= form.select :start_time_5i, (0..59), selected: Time.now.min, prompt: "分" %><p>分</p>
+     </div>
 
-  <div class="description">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
-  </div>
 
-  <div class="submit">
-    <%= form.submit %>
-  </div>
+    </div>
 
-  <%= link_to '戻る', schedules_path %>
+    <div class="form-group">
+      <%= form.label :"詳細", class: "label" %>
+      <%= form.text_field :description, class: "input" %>
+    </div>
 
-<% end %>
+    <div class="form-group">
+      <%= form.submit "保存", class: "create-button" %>
+    </div>
+
+    <%= link_to '戻る', schedules_path, class: "back-link" %>
+
+  <% end %>
+</div>

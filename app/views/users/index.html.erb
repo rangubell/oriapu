@@ -1,4 +1,22 @@
-<title>Oriapu</title>
-
-<%= link_to "ログイン", new_user_session_path, class: 'login-button' %>
-<%= link_to "新規登録", new_user_registration_path, class: 'btn' %>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Oriapu</title>
+  <link rel="stylesheet" href="users.css">
+</head>
+<body>
+  <div class="top-container">
+    <%= render "shared/headers"%>
+      <main>
+        <div class="main-container">
+          <h1 class="main-title">ようこそ</h1>
+          <p class="main-message">ログインまたは新規登録をお願いします</p>
+        </div>
+        <div class="button-container">
+          <%= link_to "ログイン", new_user_session_path, class: 'login-button' %>
+          <%= link_to "新規登録", new_user_registration_path, class: 'btn' %>
+        </div>
+      </main>
+  </div>
+</body>
+</html>

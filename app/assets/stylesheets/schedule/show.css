@@ -1,0 +1,71 @@
+.schedule-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  max-height: 100vh;
+  background: #b5d1ee;
+}
+
+.vertical-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 600px;
+  width: 90%;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+.schedule-detail {
+  margin-bottom: 20px;
+}
+
+.schedule-detail-label {
+  font-weight: bold;
+}
+
+.schedule-links {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.schedule-detail-link:not(:last-child) {
+  margin-right: 10px;
+}
+
+.schedule-detail-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #e0e0e0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 30px;
+  transition: background-color 0.3s ease;
+}
+
+.schedule-detail-link:hover {
+  background-color: #ccc;
+}
+
+.show-back-link {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.show-back-link a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #e0e0e0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 30px;
+  transition: background-color 0.3s ease;
+}
+
+.show-back-link a:hover {
+  background-color: #ccc;
+}

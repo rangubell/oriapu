@@ -1,23 +1,32 @@
-<p id="notice"><%= notice %></p>
+<%= render "shared/logos"%>
 
-<p>
-  <strong>タイトル</strong>
-  <%= @schedule.title %>
-</p>
+<div class="schedule-container">
+  <div class="vertical-center">
 
-<p>
-  <strong>開始時間</strong>
-  <%= @schedule.start_time.strftime("%Y-%m-%d %H:%M") %>
-</p>
+    <div class="schedule-detail">
+      <strong class="schedule-detail-label">予定:</strong>
+      <%= @schedule.title %>
+    </div>
 
-<p>
-  <strong>内容</strong>
-  <%= @schedule.description %>
-</p>
+    <div class="schedule-detail">
+      <strong class="schedule-detail-label">開始時間:</strong>
+      <%= @schedule.start_time.strftime("%Y-%m-%d %H:%M") %>
+    </div>
 
-<% if @schedule.user == current_user %>
-  <%= link_to '編集', edit_schedule_path(@schedule) %> |
-  <%= link_to '削除', schedule_path(@schedule), method: :delete, data: { confirm: 'Are you sure?' } %>
-<% end %>
+    <div class="schedule-detail">
+      <strong class="schedule-detail-label">詳細内容:</strong>
+      <%= @schedule.description %>
+    </div>
 
-<%= link_to '戻る', schedules_path %>
+    <% if @schedule.user == current_user %>
+      <div class="schedule-links">
+        <%= link_to '編集', edit_schedule_path(@schedule), class: "schedule-detail-link" %>
+        <%= link_to '削除', schedule_path(@schedule), method: :delete, data: { confirm: 'Are you sure?' }, class: "schedule-detail-link" %>
+      </div>
+    <% end %>
+
+    <div class="show-back-link">
+      <%= link_to '戻る', schedules_path %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,79 @@
+/* ヘッダー */
+.schedule-header {
+  display: flex;
+  align-items: center;
+  background: #b5d1ee;
+  padding: 20px;
+  height: 47px;
+}
+
+.header-title {
+  color: #333;
+  font-size: 24px;
+  flex: 1;
+}
+
+.schedule-btn {
+  display: inline-block;
+  background-color: #4caf50;
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.schedule-btn:hover {
+  background-color: #45a049;
+}
+
+/* フッター */
+
+.calendar-footer{
+  height: 322px;
+  background-color: #eeceaa;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.schedule-info {
+  width: 200px; /* 予定の幅を適宜調整 */
+  height: 150px;
+  margin: 10px;
+  padding: 10px;
+  background-color: #ffffff;
+}
+.schedule-divider {
+  border-top: 1px solid #ccc;
+  margin: 20px 0;
+}
+
+.btn-sm {
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 4px;
+  background-color: #4caf50;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.btn-sm:hover {
+  background-color: #2980b9;
+}
+
+.btn-sm:active {
+  background-color: #216a94;
+}
+
+.logo-header {
+  width: 180px; /* 画像の幅を指定 */
+  height: 50px; /* 高さを自動調整 */
+  margin-right: 20px;
+}
+
+/*  */
+/*  */

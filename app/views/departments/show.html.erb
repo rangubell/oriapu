@@ -1,46 +1,47 @@
-<p id="notice"><%= notice %></p>
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="index.css">
+</head>
 
-<h1><%= @department.name %>のスケジュール</h1>
+<body>
+  <header>
+  <div class="schedule-header">
+  <%= image_tag("public/logo2.png", alt: "T.schedule Logo", class: "logo-header") %>
+  <h1 class="header-title"><%= @department.name %> のスケジュール</h1>
+  <%= link_to '予定を入れる', new_schedule_path, class: 'schedule-btn' %>
+  <%= link_to '自分のスケジュールに戻る', schedules_path, class: 'schedule-btn' %>
+  <%= link_to '有給申請一覧', leave_applications_path, class: 'schedule-btn' %>
+  <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'schedule-btn' %>
 
-<table>
-  <thead>
-    <tr>
-      <th>タイトル</th>
-      <th>時間</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <div>
+  </header>
 
-  <tbody>
-    <% @schedules.each do |schedule| %>
-      <tr>
-        <td><%= schedule.title %></td>
-        <td><%= schedule.start_time.strftime("%Y-%m-%d %H:%M") %></td>
-        <td><%= link_to '詳細', schedule %></td>
-        <% if schedule.user == current_user %>
-          <td><%= link_to '編集', edit_schedule_path(schedule.id) %></td>
-          <td><%= link_to '削除', schedule_path(schedule.id), method: :delete, data: { confirm: "予定を削除しますか？" } %></td>
-        <% else %>
-          <td colspan="2"></td>
-        <% end %>
-      </tr>
+  <%= month_calendar events: @schedules do |date, schedules| %>
+    <%= date.day %>
+
+    <% schedules.each do |schedule| %>
+      <div>
+        <%= link_to schedule.title, schedule %>
+      </div>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to '予定を入れる', new_schedule_path %>
-<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-<%= link_to '自分のスケジュールに戻る', schedules_path %>
-<%= link_to '有給申請一覧', leave_applications_path %>
-
-<%= month_calendar events: @schedules do |date, schedules| %>
-  <%= date.day %>
-
-  <% schedules.each do |schedule| %>
-    <div>
-      <%= link_to schedule.title, schedule %>
-    </div>
   <% end %>
-<% end %>
+
+  <footer>
+  <div class="calendar-footer">
+    <% @schedules.each do |schedule| %>
+      <div class="schedule-info">
+        <h3><%= schedule.title %></h3>
+        <p><strong>制作者:</strong> <%= schedule.user.name %></p>
+        <p><strong>開始日:</strong> <%= schedule.start_time.to_date.strftime("%Y-%m-%d") %></p>
+        <p><strong>開始時間:</strong> <%= schedule.start_time.strftime("%H:%M") %></p>
+        <%= link_to '詳細', schedule, class: 'btn-sm' %>
+      <%= link_to '編集', edit_schedule_path(schedule.id), class: 'btn-sm' %>
+      <%= link_to '削除', schedule_path(schedule.id), method: :delete, data: { confirm: "予定を削除しますか？" }, class: 'btn-sm' %>
+      </div>
+      <hr class="schedule-divider">
+    <% end %>
+  </div>
+  <footer>
+</body>
+</html>

@@ -25,17 +25,18 @@ class LeaveApplicationsController < ApplicationController
 
   def update_status
     @leave_application = LeaveApplication.find(params[:id])
-    @leave_application.status = params[:leave_application][:status]
+    @leave_application.status = params[:leave_application][:status][params[:id]]
     @leave_application.updated_by_user = current_user
-
+  
     @leave_application.consume_leave_days if @leave_application.status == '承認'
-
+  
     if @leave_application.save
       redirect_to leave_applications_path, notice: '申請のステータスを更新しました'
     else
       redirect_to schedules_path
     end
   end
+  
 
   def show
     @approved_leave_applications = LeaveApplication.where(status: %w[承認 却下], user_id: current_user.id)
