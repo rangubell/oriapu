@@ -26,22 +26,5 @@
       </div>
     <% end %>
   <% end %>
-
-  <footer>
-  
-  <div class="calendar-footer">
-    <% @schedules.each do |schedule| %>
-      <div class="schedule-info">
-        <h3><%= schedule.title %></h3>
-        <p><strong>開始日:</strong> <%= schedule.start_time.to_date.strftime("%Y-%m-%d") %></p>
-        <p><strong>開始時間:</strong> <%= schedule.start_time.strftime("%H:%M") %></p>
-      <%= link_to '詳細', schedule, class: 'btn-sm' %>
-      <%= link_to '編集', edit_schedule_path(schedule.id), class: 'btn-sm' %>
-      <%= link_to '削除', schedule_path(schedule.id), method: :delete, data: { confirm: "予定を削除しますか？" }, class: 'btn-sm' %>
-      </div>
-      <hr class="schedule-divider">
-    <% end %>
-  </div>
-  </footer>
 </body>
 </html>

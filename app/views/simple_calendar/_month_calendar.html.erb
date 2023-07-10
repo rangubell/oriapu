@@ -30,4 +30,25 @@
       <% end %>
     </tbody>
   </table>
+
+  <tfoot>
+  <div class="calendar-footer">
+    <% current_month_events = sorted_events.select { |date, _events| date.month == start_date.month } %>
+    <% current_month_events.each do |date, events| %>
+        <% events.each do |event| %>
+          <div class="schedule-info">
+            <p><strong>開始日:</strong> <%= event.start_time.to_date.strftime("%Y-%m-%d") %></p>
+            <p><strong>開始時間:</strong> <%= event.start_time.strftime("%H:%M") %></p>
+            <h4><%= event.title %></h4>
+            <p><%= event.description %></p>
+              <a href="<%= schedule_path(event) %>" class="btn-sm">詳細</a>
+              <a href="<%= edit_schedule_path(event) %>" class="btn-sm">編集</a>
+              <a href="<%= schedule_path(event) %>" class="btn-sm" data-confirm="本当に削除しますか？" data-method="delete">削除</a>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</tfoot>
+
 </div>
