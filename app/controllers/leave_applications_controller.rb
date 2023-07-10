@@ -37,11 +37,17 @@ class LeaveApplicationsController < ApplicationController
     end
   end
   
-
   def show
     @approved_leave_applications = LeaveApplication.where(status: %w[承認 却下], user_id: current_user.id)
-    @updated_by_user = @leave_application.updated_by_user
+    @leave_application = LeaveApplication.find_by(id: params[:id])
+  
+    if @leave_application.nil?
+      @leave_application = LeaveApplication.new
+    else
+      @updated_by_user = @leave_application.updated_by_user
+    end
   end
+  
 
   private
 
