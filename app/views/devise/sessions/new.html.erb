@@ -6,6 +6,7 @@
       <h5>登録しているユーザーでログイン</h5>
       <%= render "devise/shared/links"%>
     </div>
+      <%= flash[:alert] %>
     <div class='account-page__inner--right user-form'>
       <%= form_with model: resource, as: resource_name, url: session_path(resource_name), local: true do |f|%>
         <div class='field'>
@@ -32,4 +33,3 @@
     </div>
   </div>
 </div>
-

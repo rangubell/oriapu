@@ -57,4 +57,8 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
-
+ja:
+  activerecord:
+    attributes:
+      schedule:
+        title: 予定
