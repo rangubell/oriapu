@@ -9,67 +9,83 @@
 
 - ユーザー管理: 社員の登録・ログイン・ログアウトを行います。
 - スケジュール管理: スケジュールの作成・編集・削除を行います。
-- グループ/部署間の共有: スケジュールの共有を部署やグループ内で行います。
-- フィルタリング機能: 日付や部署、担当者ごとのフィルタリングをサポートします。
-- 検索機能: 部署ごとの検索、日付範囲検索、キーワード検索が可能です。
+- 部署間の共有: スケジュールの共有を部署内で行います。
 - 有給休暇管理: 有給休暇の申請・承認・管理を行います。
 
+## URL
+https://oriapu-39393.onrender.com
+
+## テスト用アカウント
+- Basic認証パスワード : 0726  
+- Basic認証ID : bell  
+
+- 総務部アカウント①  
+メールアドレス : sample@sample  
+パスワード : sample1
+
+- 総務部アカウント②  
+メールアドレス ： sample@sample1  
+パスワード : sample1  
+
+- 人事部アカウント①  
+メールアドレス : test@test  
+パスワード : sample1
+
+## 利用方法
+1.トップページから新規登録をする。  
+2.『予定を入れる』ボタンをから情報(予定・開始時間・詳細)を入力し予定を保存する  
+3.有給申請ページから情報(有給開始日・有給終了日・理由)を入力し申請する  
+4.有給申請一覧ページから有給申請に対して承認・却下の返答をする。※自身が申請した有給は表示されません。
+
 ## アプリケーションを作成した背景
-以前の職場では、社員のスケジュール管理は手書きのホワイトボードに直近の予定を記入するというシステムで行われており、
+前職で社員のスケジュール管理は手書きのホワイトボードに直近の予定を記入するというシステムで行われており  
 確認や記入などの作業が非常に不便でした。そのため、スケジュール管理アプリを開発することにしました。このアプリを使用することで、社員のスケジュールの確認が簡単にできるようになります。
 
 ## 洗いだした要件
 [要件を定義したシート](https://docs.google.com/spreadsheets/d/1d2BwpnPHdmJBTnB1xTj-eQoIGGTLjjCpBmRvzppnB1E/edit#gid=982722306)
 
-# テーブル設計
+## データベース設計
+[![Image from Gyazo](https://i.gyazo.com/38dc6f187d1c7f79bed63206b6761205.png)](https://gyazo.com/38dc6f187d1c7f79bed63206b6761205)
 
-## usersテーブル
-| カラム名            | データ型     | オプション                         | 説明                     |
-| ------------------ | -----------  | --------------------------------- | ------------------------|
-| email              | string       | null: false, unique: true         | メールアドレス           |
-| encrypted_password | string       | null: false                       | パスワード（暗号化）     |
-| name               | string       | null: false                       | ユーザー名               |
-| hired_date         | date         | null: false                       | 入社日                   |
-| department_id      | integer      | null: false                       | 部署名（アクティブハッシュ）|
+## 画面遷移図
+[![Image from Gyazo](https://i.gyazo.com/f7ef81f2480e9fa3dc439c6bc31c2bec.png)](https://gyazo.com/f7ef81f2480e9fa3dc439c6bc31c2bec)
 
-### Association
-- has_many :schedules
-- has_many :leave_applications
-- has_one :paid_leave
+## 開発環境
+- Ruby: 2.6.5
+- Ruby on Rails: 6.0.6.1
+- データベース: MySQL または PostgreSQL
+- パッケージマネージャー: Bundler、Yarn
+- バージョン管理ツール: Git
+## ローカルでの動作方法
 
-## schedulesテーブル
-| カラム名       | データ型    | オプション                       | 説明                     |
-| ------------- | ----------- | ------------------------------- | ------------------------ |
-| title         | string      | null: false                     | タイトル                 |
-| description   | text        |                                 | 詳細                     |
-| start_time    | datetime    | null: false                     | 開始日時                 |
-| user          | references  | null: false, foreign_key: true  | ユーザーID（外部キー）    |
+このプロジェクトをローカル環境で実行する手順を説明します。
+下記を順番に実行してください。  
 
-### Association
-- belongs_to :user
+### クローンとディレクトリ移動
+%git clone https://github.com/rangubell/oriapu.git  
+%cd oriapu  
 
-## paid_leavesテーブル
-| カラム名               | データ型    | オプション                       | 説明                     |
-| --------------------- | ----------- | ------------------------------- | ------------------------ |
-| total_day             | integer     | default: 0                      | 累計付与有給              |
-| remaining_day         | integer     | default: 0                      | 残有給                   |
-| granted_date          |	date		    |                                 | 有給付与日               |
-| user                  | references  | null: false, foreign_key: true  | ユーザーID（外部キー）    |
+### 依存関係のインストール
+%bundle install
+%yarn install  
 
-### Association
-- belongs_to :user
-- has_many :leave_applications
+### データベースのセットアップ
+%rails db:create  
+%rails db:migrate  
 
-## leave_applicationsテーブル
-| カラム名            | データ型    | オプション                               | 説明                     |
-| ------------------ | ----------- | -------------------------------------- | ------------------------ |
-| start_date         | datetime    | null: false                             | 有給開始日              |
-| end_date           | datetime    | null: false                             | 有給終了日              |
-| reason             | string      | null: false, default: "有給消失日のため" | 申請理由                 |
-| status             | string      |                                         | 有給申請状態              |
-| user               | references  | null: false, foreign_key: true          | ユーザーID（外部キー）    |
-| paid_leave         | references  | null: false, foreign_key: true          | 有給ID（外部キー）        |
+### サーバーの起動
+%rails server  
 
-### Association
-- belongs_to :user
-- belongs_to :paid_leave
+## 工夫したポイント
+
+以下の点に工夫を凝らしました。
+
+- ロゴ画像の配置とクリックによるマイページへの遷移  
+各ページにロゴ画像を配置し、ユーザーがロゴ画像をクリックすることで簡単にマイページに遷移できるようにしました。  
+これにより、ユーザーの操作性とナビゲーションの利便性を向上させました。
+
+- スケジュールページのフッターに予定を大きく表示する欄の追加  
+ スケジュールページのフッターには、その月の予定を大きく表示する欄を設けました。   
+ これにより詳細情報へのアクセスや編集・削除などの操作も容易になっています。
+
+以上の工夫により、ユーザーの操作性と利便性を向上させることに注力しました。
