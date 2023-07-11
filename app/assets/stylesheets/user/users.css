@@ -25,11 +25,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: #070404ab;
 }
 
 .main-title {
   padding-top: 80px;
   font-size: 24px;
+  color: #070404ab;
 }
 
 .main-message {
