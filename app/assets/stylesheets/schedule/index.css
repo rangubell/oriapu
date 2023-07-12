@@ -2,13 +2,13 @@
 .schedule-header {
   display: flex;
   align-items: center;
-  background: #b5d1ee;
+  background-color: #eeceaa;
   padding: 20px;
   height: 47px;
 }
 
 .header-title {
-  color: #333;
+  color: #131010a8;
   font-size: 24px;
   flex: 1;
 }
@@ -30,10 +30,10 @@
 /* フッター */
 
 .calendar-footer{
-  height: 322px;
-  background-color: #eeceaa;
   display: flex;
   flex-wrap: wrap;
+  height: 322px;
+  background-color: #eeceaa;
 }
 
 .schedule-info {

@@ -1,5 +1,5 @@
 .calendar-heading{
-  
+  background-color: #eeceaa;
 }
 
 .calendar-nav-link {
@@ -18,5 +18,10 @@
 .calendar-title {
   font-size: 18px;
   font-weight: bold;
-  color: #555;   margin: 0 10px;
+  color: #131010a8;
+  margin: 0 10px;
+}
+
+.table {
+  background-color:#54b2f093 !important;
 }
