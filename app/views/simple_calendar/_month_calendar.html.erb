@@ -33,7 +33,7 @@
 
   <tfoot>
     <div class="calendar-footer" style="display: flex; overflow-x: auto;">
-      <% current_month_events = sorted_events.select { |date, _events| date.month == start_date.month } %>
+      <% current_month_events = sorted_events.select { |date, _events| date.year == start_date.year && date.month == start_date.month } %>
       <% current_month_events.each do |date, events| %>
         <% events.each do |event| %>
           <div class="schedule-info">
