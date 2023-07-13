@@ -1,3 +1,5 @@
+
+
 /* ヘッダー */
 .schedule-header {
   display: flex;
@@ -29,20 +31,22 @@
 
 /* フッター */
 
-.calendar-footer{
+.calendar-footer {
   display: flex;
   flex-wrap: wrap;
-  height: 322px;
+  align-content: space-between; /* 縦方向に等間隔に配置 */
   background-color: #eeceaa;
+  height: 322px;
 }
 
 .schedule-info {
-  width: 200px; /* 予定の幅を適宜調整 */
-  height: 150px;
+  width: 200px;
   margin: 10px;
   padding: 10px;
   background-color: #ffffff;
 }
+
+
 .schedule-divider {
   border-top: 1px solid #ccc;
   margin: 20px 0;
@@ -74,6 +78,7 @@
   height: 50px; /* 高さを自動調整 */
   margin-right: 20px;
 }
+
 
 /*  */
 /*  */
