@@ -18,6 +18,11 @@
       <%= @schedule.description %>
     </div>
 
+    <div class="schedule-detail">
+      <strong class="schedule-detail-label">設定者:</strong>
+      <%= @schedule.user.name %>
+    </div>
+
     <% if @schedule.user == current_user %>
       <div class="schedule-links">
         <%= link_to '編集', edit_schedule_path(@schedule), class: "schedule-detail-link" %>

@@ -27,7 +27,7 @@
 }
 
 .input {
-  width: 100%;
+  width: 96%;
   padding: 10px;
   font-size: 16px;
   border: 2px solid #acd47f;
@@ -37,6 +37,33 @@
 .datetime-select-group {
   display: flex;
   align-items: center;
+  justify-content: center;
+  background-color: #c4ec97b6;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.datetime-select-group select {
+  margin: 0 5px;
+  padding: 5px;
+  border: 1px solid #e0b3b3;
+  border-radius: 4px;
+  background-color: #fff;
+  font-size: 14px;
+  color: #333;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.datetime-select-group select:focus {
+  border-color: #ac6f6f;
+}
+
+.datetime-select-group label {
+  margin-right: 5px;
+  font-size: 14px;
+  color: #ac6f6f;
 }
 
 .create-button {
