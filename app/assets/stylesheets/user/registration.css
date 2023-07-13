@@ -1,134 +1,147 @@
 .registration-main {
   width: 100%;
   min-width: 800px;
-  height: 100%;
+  height: 100vh;
   background: #b5d1ee;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 
 .form-wrap {
-  width: 50%;
-  background: #b5d1ee;
-  padding-bottom: 70px;
+  width: 40%;
+  max-width: 600px;
+  background: #fff;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-top: -150px;
 }
+
 
 .form-header {
   width: 100%;
   text-align: center;
-  font-size: 22px;
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
 }
 
 .form-header-text {
-  padding-top: 20px;
-  line-height: 22px;
+  padding-top: 10px;
+  line-height: 20px;
   font-weight: bold;
+  color: #555;
 }
 
 .form-group {
-  width: 50%;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
-
-}
-
-.form-group:first-child {
-  padding: 0;
+  margin-bottom: 15px;
 }
 
 .form-text-wrap {
   width: 100%;
-  height: 20%;
+  height: 16px;
 }
 
 .form-text {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: bold;
+  color: #666;
+  margin-bottom: 3px;
 }
 
 .input-default {
   width: 100%;
-  margin-top: 5px;
+  margin-top: 3px;
   height: 30px;
-  padding: 10px 16px 8px;
+  padding: 8px 12px;
   border-radius: 4px;
-  border: 1px solid #ccc;
-  background: #fff;
-  font-size: 16px;
+  border: none;
+  background: #f4f4f4;
+  font-size: 14px;
   resize: none;
 }
 
 .info-text {
   color: #888;
-  font-size: 15px;
-  margin-top: 3px;
+  font-size: 12px;
+  margin-top: 2px;
 }
 
 .form-info-header {
   font-weight: bold;
+  color: #333;
+  margin-top: 15px;
 }
 
 .form-info-text {
-  font-size: 15px;
+  font-size: 12px;
+  color: #555;
 }
 
 .input-name-wrap {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .input-name {
-  width: 130px;
-  margin: 5px 20px 0 20px;
-  height: 48px;
-  line-height: 30px;
-  padding: 10px 16px 8px;
+  width: 90px;
+  margin: 3px 10px 0 10px;
+  height: 30px;
+  line-height: 20px;
+  padding: 6px 10px;
   border-radius: 4px;
-  border: 1px solid #ccc;
-  background: #fff;
-  font-size: 14px;
+  border: none;
+  background: #f4f4f4;
+  font-size: 12px;
   resize: none;
 }
 
 .input-birth-wrap {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .input-birth-wrap select {
-  width: 75px;
-  margin-top: 5px;
-  height: 45px;
-  padding-left: 10px;
+  width: 60px;
+  margin-top: 3px;
+  height: 24px;
+  padding-left: 8px;
   border-radius: 4px;
-  border: 1px solid #ccc;
-  background: #fff;
-  font-size: 12px;
+  border: none;
+  background: #f4f4f4;
+  font-size: 10px;
   cursor: pointer;
 }
 
 .input-birth-wrap p {
-  line-height: 60px;
-  padding: 0 5px;
+  line-height: 30px;
+  padding: 0 3px;
+  color: #555;
 }
 
 .field_with_errors {
   display: contents;
 }
 
-
 .form-bottom-text {
-  font-size: 15px;
-  margin-top: 10px;
+  font-size: 12px;
+  margin-top: 15px;
   text-align: center;
+  color: #888;
 }
 
 .form-bottom-text:last-child {
   margin: 0;
-  padding-bottom: 50px;
+  padding-bottom: 15px;
 }
 
 .form-bottom-text>span {
@@ -137,19 +150,21 @@
 }
 
 .register-btn {
-  width: 50%;
-  margin: 0 auto;
+  width: 100%;
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
 }
 
 .register-red-btn {
   display: block;
-  margin-bottom: 20px;
-  padding: 15px 80px;
-  background-color: #db3838;
+  margin-bottom: 15px;
+  padding: 12px 60px;
+  background-color: #4caf50;
   color: #fff;
   border: none;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 16px;
   text-align: center;
   line-height: 1;
   border-radius: 4px;
@@ -165,11 +180,10 @@
   transform: scale(0.9);
 }
 
-
 .register-info {
-  margin: 30px 180px 0 0;
+  margin: 15px 0 0;
   color: #0099e8;
-  text-align: right;
+  text-align: center;
   cursor: pointer;
 }
 
@@ -177,27 +191,36 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 5px;
 }
 
 .date-select-wrapper {
-  width: 80%; /* フォームの幅を100%に設定 */
-  padding: 20px; /* フォームの内側のパディングを設定 */
-  box-sizing: border-box; /* パディングを要素の幅に含めるためにbox-sizingを設定 */
-  display: flex; /* 子要素を横並びにするためにflexを使用 */
-  gap: 5px; /* 子要素間のスペースを設定 */
+  padding: 8px;
+  box-sizing: border-box;
+  display: flex;
+  gap: 3px;
+  justify-content: center;
 }
 
 .date-select-wrapper select {
-  flex: 1; /* セレクトボックスを均等に伸縮させるためにflexを使用 */
+  width: 100px;
+  margin-top: 3px;
+  height: 40px;
+  padding-left: 6px;
+  border-radius: 4px;
+  border: none;
+  background: #f4f4f4;
+  font-size: 15px;
+  cursor: pointer;
 }
 
-
-.department-select{
-  margin-top: 5px;
-  padding: 10px 16px 8px;
+.department-select {
+  margin-top: 3px;
+  padding: 8px 12px;
   border-radius: 4px;
-  border: 1px solid #ccc;
-  background: #fff;
-  font-size: 16px;
+  border: none;
+  background: #f4f4f4;
+  font-size: 14px;
   resize: none;
 }
+
