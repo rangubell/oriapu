@@ -31,10 +31,14 @@ class SchedulesController < ApplicationController
   end
 
   def destroy
-    @schedule.destroy
-    redirect_to schedules_path, notice: '削除しました'
+    if current_user == @schedule.user
+      @schedule.destroy
+      redirect_to schedules_path, notice: '削除しました'
+    else
+      redirect_to schedule_path(@schedule)
+    end
   end
-
+  
   def edit
     return if current_user == @schedule.user
 
