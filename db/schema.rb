@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2023_06_26_151311) do
   create_table "leave_applications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.datetime "start_date", null: false
     t.datetime "end_date", null: false
-    t.string "reason", default: "有給消失日のため", null: false
+    t.string "reason", default: "私用のため", null: false
     t.string "status", default: "保留"
     t.bigint "user_id", null: false
     t.bigint "paid_leave_id", null: false
