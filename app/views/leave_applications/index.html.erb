@@ -13,7 +13,7 @@
           <th>理由</th>
           <th>状態</th>
           <th>更新者</th>
-          <th>更新日時</th>
+          <th>更新日</th>
         </tr>
       </thead>
       <tbody>
@@ -32,7 +32,7 @@
                 <% end %>
               </td>
               <td><%= leave_application.updated_by_user.name if leave_application.updated_by_user %></td>
-              <td><%= leave_application.updated_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
+              <td><%= leave_application.updated_at.strftime("%Y/%m/%d") %></td>
             </tr>
           <% end %>
         <% end %>
