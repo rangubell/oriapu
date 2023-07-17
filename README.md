@@ -45,6 +45,16 @@ https://oriapu-39393.onrender.com
 ## 洗いだした要件
 [要件を定義したシート](https://docs.google.com/spreadsheets/d/1d2BwpnPHdmJBTnB1xTj-eQoIGGTLjjCpBmRvzppnB1E/edit#gid=982722306)
 
+## 実装した機能についての画像やGIFおよびその説明
+- 各種ページにロゴ画像を配置し、クリックするとマイページに戻るようにしました。
+[![Image from Gyazo](https://i.gyazo.com/5641a4a9c7eb7e106a9930be1f6235ca.gif)](https://gyazo.com/5641a4a9c7eb7e106a9930be1f6235ca)
+
+## 実装予定の機能
+- 社員全員のスケジュールページの追加  
+- 指定した社員の予定を表示するフィルタリング機能  
+- 既定の期間経過した有給を消滅させるシステム  
+- ユーザー名・メールアドレス・パスワードの変更機能
+
 ## データベース設計
 [![Image from Gyazo](https://i.gyazo.com/38dc6f187d1c7f79bed63206b6761205.png)](https://gyazo.com/38dc6f187d1c7f79bed63206b6761205)
 
